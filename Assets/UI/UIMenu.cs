@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 namespace Grimmz.UI.Main
 {
-    public class UIMain : Singleton<UIMain>
+    public class UIMenu : Singleton<UIMenu>
     {
-        [SerializeField] private Button logButton;
+        [SerializeField] private Button logButton = null;
 
         void Start()
         {
