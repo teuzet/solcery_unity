@@ -23,8 +23,6 @@ namespace Grimmz.FSM.Game
 
         public override async UniTask Exit()
         {
-            await base.Exit();
-
             if (string.IsNullOrEmpty(_sceneName))
             {
                 Debug.LogError("Empty scene name in GameState");
@@ -32,6 +30,7 @@ namespace Grimmz.FSM.Game
             }
 
             await SceneManager.UnloadSceneAsync(_sceneName);
+            await base.Exit();
         }
     }
 }

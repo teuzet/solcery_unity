@@ -1,16 +1,18 @@
 using Cysharp.Threading.Tasks;
 using Grimmz.FSM.Game;
-using UnityEngine;
+using Grimmz.Utils;
+using Grimmz.Modules.Wallet;
 
 namespace Grimmz
 {
-    public class Game : MonoBehaviour
+    public class Game : Singleton<Game>
     {
-        [SerializeField] private GameTransition initialTransition = null;
-
-        void Start()
+        public void Init()
         {
-            GameSM.Instance.PerformTransition(initialTransition).Forget();
+            UnityEngine.Debug.Log("Game Init");
+
+            Wallet.Instance?.Init();
+            GameSM.Instance.PerformInitialTransition().Forget();
         }
     }
 }

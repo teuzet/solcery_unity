@@ -1,3 +1,4 @@
+using Grimmz.Modules.Wallet;
 using Grimmz.Utils;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace Grimmz.WebGL
         {
             var w = JsonUtility.FromJson<WalletConnectionData>(data);
             Debug.Log($"Unity knows that wallet is connected: {w.isConnected} - {w.someInt}");
+            Wallet.Instance.Data.IsWalletConnected.Value = w.isConnected;
         }
     }
 

@@ -9,7 +9,14 @@ namespace Grimmz.FSM
     where TState : State
     where TTransition : Transition<TState>
     {
+        [SerializeField] private TTransition _initialTransition = null;
         private TState _currentState;
+
+        public async UniTask PerformInitialTransition()
+        {
+            if (_initialTransition != null)
+                await PerformTransition(_initialTransition);
+        }
 
         public async UniTask<bool> PerformTransition(TTransition transition)
         {

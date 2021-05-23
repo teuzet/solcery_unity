@@ -3,7 +3,7 @@ using Grimmz.WebGL;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Grimmz.UI.Main
+namespace Grimmz.UI.Menu
 {
     public class UIMenu : Singleton<UIMenu>
     {
