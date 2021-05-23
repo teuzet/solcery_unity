@@ -16,5 +16,12 @@ MonoBehaviour:
   deleteDllAfterBuilds: 1
   AutomateForAllAOTPlatforms: 1
   automateForPlatforms: 0900000014000000
-  lastScan: 637572021630025153
-  supportSerializedTypes: []
+  lastScan: 637573343961348615
+  supportSerializedTypes:
+  - TypeName: Grimmz.Utils.IUpdateable, Assembly-CSharp
+    IsCustom: 0
+    Emit: 1
+  - TypeName: System.Collections.Generic.List`1[[Grimmz.Utils.IUpdateable, Assembly-CSharp]],
+      mscorlib
+    IsCustom: 0
+    Emit: 1
