@@ -13,7 +13,7 @@ namespace Grimmz.Editor
             if (EditorApplication.isPlaying)
             {
                 EditorApplication.ExitPlaymode();
-                await UniTask.WaitUntil(() => !EditorApplication.isPlaying);
+                await UniTask.WaitUntil(() => !EditorApplication.isPlaying && !EditorApplication.isCompiling);
                 await UniTask.Yield();
             }
 
