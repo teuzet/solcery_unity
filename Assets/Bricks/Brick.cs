@@ -7,6 +7,6 @@ namespace Grimmz
 
     public abstract class Brick
     {
-
+        protected Context Context { get; }
     }
 }
