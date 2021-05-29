@@ -16,7 +16,7 @@ MonoBehaviour:
   deleteDllAfterBuilds: 1
   AutomateForAllAOTPlatforms: 1
   automateForPlatforms: 0900000014000000
-  lastScan: 637573829894435737
+  lastScan: 637578473429086159
   supportSerializedTypes:
   - TypeName: Grimmz.Utils.IUpdateable, Assembly-CSharp
     IsCustom: 0

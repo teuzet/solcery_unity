@@ -9,9 +9,9 @@ namespace Grimmz.UI
     public class UIGameTransitionButton : MonoBehaviour
     {
         [SerializeField] private GameTransition transition = null;
-        [SerializeField] private Button button = null;
+        [SerializeField] protected Button button = null;
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             button.onClick.AddListener(() => { GameSM.Instance.PerformTransition(transition).Forget(); });
         }
