@@ -9,12 +9,12 @@ namespace Grimmz.FSM.Game
         public override async UniTask Enter()
         {
             await base.Enter();
-            Create.Instance?.Init();
+            Grimmz.Create.Instance?.Init();
         }
 
         public override async UniTask Exit()
         {
-            Create.Instance?.DeInit();
+            Grimmz.Create.Instance?.DeInit();
             await base.Exit();
         }
     }
