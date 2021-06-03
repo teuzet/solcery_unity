@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Grimmz.WebGL;
 using UnityEngine;
 
 namespace Grimmz.FSM.Game
@@ -10,6 +11,7 @@ namespace Grimmz.FSM.Game
         {
             await base.Enter();
             Sandbox.Instance?.Init();
+            UnityToReact.Instance.CallLogToConsole("privet");
         }
 
         public override async UniTask Exit()

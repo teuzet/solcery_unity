@@ -7,7 +7,7 @@ namespace Grimmz.UI.Create.BrickEditor
         [SerializeField] private GameObject optionPrefab = null;
         [SerializeField] private BrickConfigs brickConfigs = null;
 
-        public void Open(BrickType brickType)
+        public void Open(BrickType brickType, Transform anchor)
         {
             var names = brickConfigs.GetConfigSubtypeNamesByType(brickType);
 
@@ -15,6 +15,8 @@ namespace Grimmz.UI.Create.BrickEditor
                 foreach (var name in names)
                     AddOption(name);
 
+
+            this.transform.position = anchor.position;
         }
 
         private void AddOption(string optionName)
@@ -26,7 +28,7 @@ namespace Grimmz.UI.Create.BrickEditor
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.Space))
-                Open(BrickType.Action);
+                Open(BrickType.Action, null);
         }
     }
 }
