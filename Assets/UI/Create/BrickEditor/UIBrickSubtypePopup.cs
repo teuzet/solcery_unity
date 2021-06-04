@@ -10,14 +10,14 @@ namespace Grimmz.UI.Create.BrickEditor
         [SerializeField] private BrickConfigs brickConfigs = null;
 
         private BrickType _brickType;
-        private Transform _anchor;
-        private Action<SubtypeNameConfig, Transform> _onOptionSelected;
+        private Action<SubtypeNameConfig> _onOptionSelected;
         private List<UIBrickSubtypePopupOption> _options = new List<UIBrickSubtypePopupOption>();
 
-        public void Open(BrickType brickType, Transform anchor, Action<SubtypeNameConfig, Transform> onOptionSelected)
+        public void Open(BrickType brickType, Transform anchor, Action<SubtypeNameConfig> onOptionSelected)
         {
+            this.transform.SetAsLastSibling();
+
             _brickType = brickType;
-            _anchor = anchor;
             _onOptionSelected = onOptionSelected;
 
             var subTypeConfigs = brickConfigs.GetConfigSubtypeNamesByType(brickType);
@@ -38,7 +38,7 @@ namespace Grimmz.UI.Create.BrickEditor
 
         private void OnOptionSelected(SubtypeNameConfig subtypeNameConfig)
         {
-            _onOptionSelected?.Invoke(subtypeNameConfig, _anchor);
+            _onOptionSelected?.Invoke(subtypeNameConfig);
         }
 
         private void AddOption(SubtypeNameConfig subTypeName)
