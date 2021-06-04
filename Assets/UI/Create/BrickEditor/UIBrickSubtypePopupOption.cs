@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +10,13 @@ namespace Grimmz.UI.Create.BrickEditor
         [SerializeField] private TextMeshProUGUI optionName = null;
         [SerializeField] private Button button = null;
 
-        public void SetName(string name)
+        public void Init(SubtypeNameConfig subtypeNameConfig, Action<SubtypeNameConfig> onSelect)
+        {
+            SetName(subtypeNameConfig.Name);
+            button.onClick.AddListener(() => onSelect?.Invoke(subtypeNameConfig));
+        }
+
+        private void SetName(string name)
         {
             if (optionName != null)
                 optionName.text = name;

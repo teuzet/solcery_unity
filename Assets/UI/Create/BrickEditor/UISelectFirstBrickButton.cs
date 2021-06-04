@@ -12,10 +12,8 @@ namespace Grimmz.UI.Create.BrickEditor
         {
             button.onClick.AddListener(() =>
             {
-                var pos = this.transform.position;
-                Debug.Log(pos);
                 UIBrickEditor.Instance.OpenSubtypePopup(BrickType.Action, anchor);
-                Destroy(this.gameObject);
+                // Destroy(this.gameObject);
             });
         }
     }

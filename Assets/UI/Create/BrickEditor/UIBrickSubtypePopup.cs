@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Grimmz.UI.Create.BrickEditor
@@ -7,28 +9,53 @@ namespace Grimmz.UI.Create.BrickEditor
         [SerializeField] private GameObject optionPrefab = null;
         [SerializeField] private BrickConfigs brickConfigs = null;
 
-        public void Open(BrickType brickType, Transform anchor)
-        {
-            var names = brickConfigs.GetConfigSubtypeNamesByType(brickType);
+        private BrickType _brickType;
+        private Transform _anchor;
+        private Action<SubtypeNameConfig, Transform> _onOptionSelected;
+        private List<UIBrickSubtypePopupOption> _options = new List<UIBrickSubtypePopupOption>();
 
-            if (names != null && names.Count > 0)
-                foreach (var name in names)
-                    AddOption(name);
+        public void Open(BrickType brickType, Transform anchor, Action<SubtypeNameConfig, Transform> onOptionSelected)
+        {
+            _brickType = brickType;
+            _anchor = anchor;
+            _onOptionSelected = onOptionSelected;
+
+            var subTypeConfigs = brickConfigs.GetConfigSubtypeNamesByType(brickType);
+
+            if (subTypeConfigs != null && subTypeConfigs.Count > 0)
+                foreach (var subTypeConfig in subTypeConfigs)
+                    AddOption(subTypeConfig);
 
 
             this.transform.position = anchor.position;
         }
 
-        private void AddOption(string optionName)
+        public void Close()
         {
-            var newOption = Instantiate(optionPrefab, this.transform).GetComponent<UIBrickSubtypePopupOption>();
-            newOption?.SetName(optionName);
+            this.gameObject.SetActive(false);
+            ClearAllOptions();
         }
 
-        void Update()
+        private void OnOptionSelected(SubtypeNameConfig subtypeNameConfig)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-                Open(BrickType.Action, null);
+            _onOptionSelected?.Invoke(subtypeNameConfig, _anchor);
+        }
+
+        private void AddOption(SubtypeNameConfig subTypeName)
+        {
+            var newOption = Instantiate(optionPrefab, this.transform).GetComponent<UIBrickSubtypePopupOption>();
+            _options.Add(newOption);
+            newOption?.Init(subTypeName, OnOptionSelected);
+        }
+
+        private void ClearAllOptions()
+        {
+            for (int i = _options.Count - 1; i >= 0; i--)
+            {
+                DestroyImmediate(_options[i].gameObject);
+            }
+
+            _options = new List<UIBrickSubtypePopupOption>();
         }
     }
 }

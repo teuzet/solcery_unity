@@ -20,13 +20,13 @@ namespace Grimmz
             return null;
         }
 
-        public List<string> GetConfigSubtypeNamesByType(BrickType brickType)
+        public List<SubtypeNameConfig> GetConfigSubtypeNamesByType(BrickType brickType)
         {
             var configsOfType = GetConfigsByType(brickType);
 
             if (configsOfType != null && configsOfType.Count > 0)
             {
-                var names = new List<string>();
+                var names = new List<SubtypeNameConfig>();
 
                 foreach (var config in configsOfType)
                 {
@@ -37,13 +37,38 @@ namespace Grimmz
                         _ => Enum.GetName(typeof(BrickSubtypeValue), config.Subtype)
                     };
 
-                    names.Add(name);
+                    names.Add(new SubtypeNameConfig(config.Subtype, name, config));
                 }
 
                 return names;
             }
 
             return null;
+        }
+
+        public int GetSubtypeIndex(BrickType brickType, Enum subType)
+        {
+            return brickType switch
+            {
+                BrickType.Action => (int)((BrickSubtypeAction)subType),
+                BrickType.Condition => (int)((BrickSubtypeCondition)subType),
+                BrickType.Value => (int)((BrickSubtypeValue)subType),
+                _ => (int)((BrickSubtypeValue)subType)
+            };
+        }
+    }
+
+    public struct SubtypeNameConfig
+    {
+        public Enum Subtype;
+        public string Name;
+        public BrickConfig Config;
+
+        public SubtypeNameConfig(Enum subtype, string name, BrickConfig config)
+        {
+            Subtype = subtype;
+            Name = name;
+            Config = config;
         }
     }
 }
