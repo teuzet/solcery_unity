@@ -9,25 +9,26 @@ namespace Grimmz.UI.Create.BrickEditor
         [SerializeField] private GameObject optionPrefab = null;
         [SerializeField] private BrickConfigs brickConfigs = null;
 
-        private BrickType _brickType;
-        private Action<SubtypeNameConfig> _onOptionSelected;
+        private Action<SubtypeNameConfig, UISelectBrickButton> _onOptionSelected;
         private List<UIBrickSubtypePopupOption> _options = new List<UIBrickSubtypePopupOption>();
 
-        public void Open(BrickType brickType, Transform anchor, Action<SubtypeNameConfig> onOptionSelected)
+        private UISelectBrickButton _button;
+
+        public void Open(UISelectBrickButton button, Action<SubtypeNameConfig, UISelectBrickButton> onOptionSelected)
         {
             this.transform.SetAsLastSibling();
 
-            _brickType = brickType;
+            _button = button;
             _onOptionSelected = onOptionSelected;
 
-            var subTypeConfigs = brickConfigs.GetConfigSubtypeNamesByType(brickType);
+            var subTypeConfigs = brickConfigs.GetConfigSubtypeNamesByType(button.BrickType);
 
             if (subTypeConfigs != null && subTypeConfigs.Count > 0)
                 foreach (var subTypeConfig in subTypeConfigs)
                     AddOption(subTypeConfig);
 
 
-            this.transform.position = anchor.position;
+            this.transform.position = button.transform.position;
         }
 
         public void Close()
@@ -38,7 +39,7 @@ namespace Grimmz.UI.Create.BrickEditor
 
         private void OnOptionSelected(SubtypeNameConfig subtypeNameConfig)
         {
-            _onOptionSelected?.Invoke(subtypeNameConfig);
+            _onOptionSelected?.Invoke(subtypeNameConfig, _button);
         }
 
         private void AddOption(SubtypeNameConfig subTypeName)

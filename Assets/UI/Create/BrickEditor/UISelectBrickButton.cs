@@ -8,20 +8,27 @@ namespace Grimmz.UI.Create.BrickEditor
         [SerializeField] private Transform verticalGroup = null;
         [SerializeField] private Button button = null;
 
-        private BrickType _brickType;
+        public Transform Vert => verticalGroup;
+        public BrickType BrickType { get; private set; }
+        public UIBrick Parent { get; private set; }
+        public int IndexInParentSlots { get; private set; }
 
-        public void Init(BrickType brickType, Transform vert)
+        public void Init(BrickType brickType, Transform vert, UIBrick parent = null, int indexInParentSlots = 0)
         {
-            _brickType = brickType;
+            BrickType = brickType;
             verticalGroup = vert;
-        }
+            Parent = parent;
+            IndexInParentSlots = indexInParentSlots;
 
-        void Start()
-        {
             button.onClick.AddListener(() =>
             {
-                UIBrickEditor.Instance.OpenSubtypePopup(BrickType.Action, this.transform, verticalGroup, this.gameObject);
+                UIBrickEditor.Instance.OpenSubtypePopup(this);
             });
+        }
+
+        private void OnDisable()
+        {
+            button.onClick.RemoveAllListeners();
         }
     }
 }

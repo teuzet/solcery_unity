@@ -1,4 +1,5 @@
 using Grimmz.Utils;
+using Sirenix.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,21 +14,18 @@ namespace Grimmz.UI.Create.BrickEditor
         [SerializeField] private RectTransform content;
         [SerializeField] private GameObject brickPrefab = null;
 
-        private Transform _vert;
-        private GameObject _selectBrickButton;
+        private BrickTree _brickTree;
 
         private void Start()
         {
+            _brickTree = new BrickTree();
             CreateFirstButton();
         }
 
-        public void OpenSubtypePopup(BrickType brickType, Transform popupAnchor, Transform vert, GameObject button)
+        public void OpenSubtypePopup(UISelectBrickButton button)
         {
-            _vert = vert;
-            _selectBrickButton = button;
-
             subtypePopup.gameObject.SetActive(true);
-            subtypePopup.Open(BrickType.Action, popupAnchor, OnBrickAdded);
+            subtypePopup.Open(button, OnBrickAdded);
         }
 
         public void CloseSubtypePopup()
@@ -35,26 +33,41 @@ namespace Grimmz.UI.Create.BrickEditor
             subtypePopup.Close();
         }
 
-        private void OnBrickAdded(SubtypeNameConfig subtypeNameConfig)
+        private void OnBrickAdded(SubtypeNameConfig subtypeNameConfig, UISelectBrickButton button)
         {
             Debug.Log($"{subtypeNameConfig.Name} selected");
             CloseSubtypePopup();
-            DestroyImmediate(_selectBrickButton);
-            CreateBrick(subtypeNameConfig.Config);
+            DestroyImmediate(button.gameObject);
+            CreateBrick(subtypeNameConfig.Config, button);
         }
 
-        private void CreateBrick(BrickConfig config)
+        private void CreateBrick(BrickConfig config, UISelectBrickButton button)
         {
-            var brick = Instantiate(brickPrefab, _vert).GetComponent<UIBrick>();
-            brick.Init(config);
+            var brickData = new BrickData(config);
 
-            var hor = Instantiate(horPrefab, _vert);
+            if (button.Parent == null)
+            {
+                Debug.Log("Setting Genesis BrickData");
+                _brickTree.SetGenesis(brickData);
+            }
+            else
+            {
+                Debug.Log($"Parent Slots Count: {button.Parent.Data.Slots.Length}");
+                Debug.Log($"Adding Slot {button.IndexInParentSlots} to {button.Parent.Data.Type}");
+                button.Parent.Data.Slots[button.IndexInParentSlots] = brickData;
+            }
 
-            foreach (var slot in config.Slots)
+            var brick = Instantiate(brickPrefab, button.Vert).GetComponent<UIBrick>();
+            brick.Init(config, brickData);
+
+            var hor = Instantiate(horPrefab, button.Vert);
+
+            for (int i = 0; i < config.Slots.Count; i++)
             {
                 var vert = Instantiate(vertPrefab, hor.transform);
                 var selectBrickButton = Instantiate(selectBrickButtonPrefab, vert.transform).GetComponent<UISelectBrickButton>();
-                selectBrickButton.Init(slot.Type, vert.transform);
+                selectBrickButton.Init(config.Slots[i].Type, vert.transform, brick, i);
+                Debug.Log(selectBrickButton.Parent.Data.Slots.Length);
             }
 
             LayoutRebuilder.ForceRebuildLayoutImmediate(content);

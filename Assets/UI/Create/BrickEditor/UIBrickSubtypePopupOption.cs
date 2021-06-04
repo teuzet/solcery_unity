@@ -21,5 +21,10 @@ namespace Grimmz.UI.Create.BrickEditor
             if (optionName != null)
                 optionName.text = name;
         }
+
+        private void OnDisable()
+        {
+            button.onClick.RemoveAllListeners();
+        }
     }
 }
