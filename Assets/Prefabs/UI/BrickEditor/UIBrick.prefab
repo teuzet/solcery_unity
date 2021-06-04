@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2866484903447975549}
   - component: {fileID: 2866484903447975546}
+  - component: {fileID: 4030365769093502730}
   m_Layer: 5
   m_Name: UIBrickMain_Right
   m_TagString: Untagged
@@ -34,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 0}
+  m_AnchoredPosition: {x: 200, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2866484903447975546
 MonoBehaviour:
@@ -63,6 +64,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &4030365769093502730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2866484903447975548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
 --- !u!1 &2866484903499965843
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,7 +327,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 215, y: 0}
+  m_AnchoredPosition: {x: 115, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2866484904180583210
@@ -542,7 +557,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 215, y: 0}
+  m_AnchoredPosition: {x: 115, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2866484904701094240
@@ -900,6 +915,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIBrickObjectSwitcher
       objectReference: {fileID: 0}
+    - target: {fileID: 5455428127769115904, guid: 37bcd143ac427b24b8a28d31659fae91, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5455428127769115905, guid: 37bcd143ac427b24b8a28d31659fae91, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -930,7 +949,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5455428127769115905, guid: 37bcd143ac427b24b8a28d31659fae91, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 5455428127769115905, guid: 37bcd143ac427b24b8a28d31659fae91, type: 3}
       propertyPath: m_SizeDelta.y
