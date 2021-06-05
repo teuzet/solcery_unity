@@ -1,5 +1,4 @@
-using Cysharp.Threading.Tasks;
-using Grimmz.FSM.Create;
+using Grimmz.UI.Create;
 using Grimmz.Utils;
 using UnityEngine;
 
@@ -10,13 +9,13 @@ namespace Grimmz
         public void Init()
         {
             Debug.Log("Create Init");
-
-            CreateSM.Instance.PerformInitialTransition().Forget();
+            UICreate.Instance.Init();
         }
 
         public void DeInit()
         {
             Debug.Log("Create DeInit");
+            UICreate.Instance.DeInit();
         }
     }
 }
