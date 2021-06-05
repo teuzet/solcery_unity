@@ -7,6 +7,8 @@ namespace Grimmz.UI.Create.BrickEditor
 {
     public class UIBrickEditor : Singleton<UIBrickEditor>
     {
+        public BrickTree BrickTree => _brickTree;
+
         [SerializeField] private UIBrickSubtypePopup subtypePopup = null;
         [SerializeField] private GameObject horPrefab = null;
         [SerializeField] private GameObject vertPrefab = null;

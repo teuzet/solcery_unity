@@ -1,4 +1,6 @@
+using Grimmz.UI.Create.BrickEditor;
 using Grimmz.Utils;
+using Grimmz.WebGL;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,17 +10,16 @@ namespace Grimmz.UI.Create
     {
         [SerializeField] private Button createButton = null;
 
-        //TODO: do it on Init()
-        void Start()
+        public void Init()
         {
             createButton.onClick.AddListener(() =>
             {
-                
+                var serializedCard = UIBrickEditor.Instance.BrickTree.Serialize();
+                UnityToReact.Instance.CallCreateCard(serializedCard);
             });
         }
 
-        //TODO: do it on DeInit()
-        void OnDisable()
+        public void DeInit()
         {
             createButton.onClick.RemoveAllListeners();
         }

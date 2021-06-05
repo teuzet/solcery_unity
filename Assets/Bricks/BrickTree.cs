@@ -12,10 +12,15 @@ namespace Grimmz
         {
             Genesis = data;
         }
+
+        public string Serialize()
+        {
+            return "card";
+        }
     }
 
     public struct BrickMetadata
     {
-        
+
     }
 }
