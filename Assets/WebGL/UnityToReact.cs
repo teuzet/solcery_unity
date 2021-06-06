@@ -8,7 +8,7 @@ namespace Grimmz.WebGL
     public class UnityToReact : Singleton<UnityToReact>
     {
         [DllImport("__Internal")] private static extern void LogToConsole(string message);
-        [DllImport("__Internal")] private static extern void CreateCard(byte[] card);
+        [DllImport("__Internal")] private static extern void CreateCard(string card);
 
         public void CallLogToConsole(string message)
         {
@@ -21,14 +21,11 @@ namespace Grimmz.WebGL
         {
 
             UnityEngine.Debug.Log("CallCreateCard");
-            string buf = "";
-            foreach (byte b in card) {
-                buf = buf + b + ", ";
-            }
+            string buf = String.Join("|", card);
             UnityEngine.Debug.Log(buf);
 
 #if (UNITY_WEBGL && !UNITY_EDITOR)
-    CreateCard(card);
+        CreateCard(buf);
 #endif
         }
     }
