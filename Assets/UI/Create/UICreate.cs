@@ -4,18 +4,21 @@ using Grimmz.WebGL;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using System;
 
 namespace Grimmz.UI.Create
 {
     public class UICreate : Singleton<UICreate>
     {
+        [SerializeField] private UICreateCard createCard = null;
         [SerializeField] private Button createButton = null;
 
         public void Init()
         {
             createButton.onClick.AddListener(() =>
             {
+                UIBrickEditor.Instance.BrickTree.MetaData.Name = string.IsNullOrEmpty(createCard.CardNameInput.text) ? "Card" : createCard.CardNameInput.text;
+                UIBrickEditor.Instance.BrickTree.MetaData.Description = string.IsNullOrEmpty(createCard.CardDescriptionInput.text) ? "Description" : createCard.CardDescriptionInput.text;
+
                 List<byte> buffer = new List<byte>();
                 UIBrickEditor.Instance.BrickTree.SerializeToBytes(ref buffer);
                 UnityToReact.Instance?.CallCreateCard(buffer.ToArray());
