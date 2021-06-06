@@ -77,15 +77,15 @@ namespace Grimmz.UI.Create.BrickEditor
                 //     lineRenderer.transform.TransformPoint(brick.LinePointBot.position)
                 //     };
 
-                knob1.transform.position = button.Parent.Slots.Slots[button.IndexInParentSlots].LinePointTop.transform.position;
-                knob1.SetParent(lr.transform);
-                knob2.transform.position = button.Parent.Slots.Slots[button.IndexInParentSlots].LinePointBot.transform.position;
-                knob2.SetParent(lr.transform);
-                knob3.transform.position = brick.LinePointTop.transform.position;
-                knob3.SetParent(lr.transform);
-                knob4.transform.position = brick.LinePointBot.transform.position;
-                knob4.SetParent(lr.transform);
-                lr.Points = new Vector2[] { knob1.localPosition, knob2.localPosition, knob3.localPosition, knob4.localPosition };
+                // knob1.transform.position = button.Parent.Slots.Slots[button.IndexInParentSlots].LinePointTop.transform.position;
+                // knob1.SetParent(lr.transform);
+                // knob2.transform.position = button.Parent.Slots.Slots[button.IndexInParentSlots].LinePointBot.transform.position;
+                // knob2.SetParent(lr.transform);
+                // knob3.transform.position = brick.LinePointTop.transform.position;
+                // knob3.SetParent(lr.transform);
+                // knob4.transform.position = brick.LinePointBot.transform.position;
+                // knob4.SetParent(lr.transform);
+                // lr.Points = new Vector2[] { knob1.localPosition, knob2.localPosition, knob3.localPosition, knob4.localPosition };
             }
 
             var hor = Instantiate(horPrefab, button.Vert);
@@ -96,6 +96,28 @@ namespace Grimmz.UI.Create.BrickEditor
                 var selectBrickButton = Instantiate(selectBrickButtonPrefab, vert.transform).GetComponent<UISelectBrickButton>();
                 selectBrickButton.Init(config.Slots[i].Type, vert.transform, brick, i);
                 Debug.Log(selectBrickButton.Parent.Data.Slots.Length);
+
+
+                // var lr = Instantiate(lineRendererPrefab, content).GetComponent<UILineRenderer>();
+                // lr.transform.position = brick.Slots.Slots[i].LinePointTop.transform.position;
+
+                // var dot1 = new GameObject("Dot1");
+                // dot1.transform.position = brick.Slots.Slots[i].LinePointTop.transform.position;
+                // dot1.transform.SetParent(lr.transform);
+
+                // var dot2 = new GameObject("Dot2");
+                // dot2.transform.position = brick.Slots.Slots[i].LinePointBot.transform.position;
+                // dot2.transform.SetParent(lr.transform);
+
+                // var dot3 = new GameObject("Dot3");
+                // dot3.transform.position = selectBrickButton.LinePointTop.transform.position;
+                // dot3.transform.SetParent(lr.transform);
+
+                // var dot4 = new GameObject("Dot4");
+                // dot4.transform.position = selectBrickButton.LinePointBot.transform.position;
+                // dot4.transform.SetParent(lr.transform);
+
+                // lr.Points = new Vector2[] { dot1.transform.localPosition, dot2.transform.localPosition, dot3.transform.localPosition, dot4.transform.localPosition };
             }
 
             LayoutRebuilder.ForceRebuildLayoutImmediate(content);

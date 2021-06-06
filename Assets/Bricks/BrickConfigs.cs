@@ -40,7 +40,7 @@ namespace Grimmz
             return null;
         }
 
-        public int GetSubtypeIndex(BrickType brickType, Enum subType)
+        public static int GetSubtypeIndex(BrickType brickType, Enum subType)
         {
             return brickType switch
             {
@@ -51,7 +51,7 @@ namespace Grimmz
             };
         }
 
-        public string GetSubtypeName(BrickType brickType, Enum subtype)
+        public static string GetSubtypeName(BrickType brickType, Enum subtype)
         {
             return brickType switch
             {

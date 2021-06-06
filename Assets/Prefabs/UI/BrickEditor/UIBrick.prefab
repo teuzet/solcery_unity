@@ -525,6 +525,7 @@ MonoBehaviour:
   description: {fileID: 2866484904857805332}
   objectSwitcher: {fileID: 2866484904598131016}
   slots: {fileID: 2866484904180583211}
+  lineRenderer: {fileID: 0}
 --- !u!1 &2866484904701094245
 GameObject:
   m_ObjectHideFlags: 0

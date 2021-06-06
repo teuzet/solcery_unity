@@ -5,6 +5,11 @@ namespace Grimmz.UI.Create.BrickEditor
 {
     public class UISelectBrickButton : MonoBehaviour
     {
+        public RectTransform LinePointTop => linePointTop;
+        public RectTransform LinePointBot => linePointBot;
+
+        [SerializeField] private RectTransform linePointTop = null;
+        [SerializeField] private RectTransform linePointBot = null;
         [SerializeField] private Transform verticalGroup = null;
         [SerializeField] private Button button = null;
 

@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI.Extensions;
 
 namespace Grimmz.UI.Create.BrickEditor
 {
@@ -28,7 +29,7 @@ namespace Grimmz.UI.Create.BrickEditor
             Data = data;
 
             typeName.text = Enum.GetName(typeof(BrickType), config.Type);
-            subtypeName.text = brickConfigs.GetSubtypeName(config.Type, config.Subtype);
+            subtypeName.text = BrickConfigs.GetSubtypeName(config.Type, config.Subtype);
             description.text = config.Description;
 
             objectSwitcher.gameObject.SetActive(config.HasObjectSelection);
