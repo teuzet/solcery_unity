@@ -7,6 +7,11 @@ namespace Grimmz.Modules.CardCollection
     {
         private Collection _collection = null;
 
+        public void UpdateCollection(Collection collection)
+        {
+            _collection = collection;
+        }
+
         public void Init()
         {
             Debug.Log("CardCollection Init");
