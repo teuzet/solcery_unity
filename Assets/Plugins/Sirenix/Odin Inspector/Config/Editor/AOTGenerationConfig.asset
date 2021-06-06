@@ -16,7 +16,7 @@ MonoBehaviour:
   deleteDllAfterBuilds: 1
   AutomateForAllAOTPlatforms: 1
   automateForPlatforms: 0900000014000000
-  lastScan: 637585289255512327
+  lastScan: 637586258472925902
   supportSerializedTypes:
   - TypeName: Grimmz.BrickConfig, Assembly-CSharp
     IsCustom: 0
