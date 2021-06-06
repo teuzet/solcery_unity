@@ -21,7 +21,7 @@ namespace Grimmz.WebGL
         public void CallOnUnityLoaded()
         {
 #if (UNITY_WEBGL && !UNITY_EDITOR)
-    LogToConsole (message);
+    OnUnityLoaded (message);
 #endif
         }
 
