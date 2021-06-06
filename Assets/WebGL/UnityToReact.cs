@@ -21,6 +21,10 @@ namespace Grimmz.WebGL
         {
 
             UnityEngine.Debug.Log("CallCreateCard");
+            string buf = "";
+            foreach (byte b in card) {
+                buf = buf + b + ", ";
+            }
             UnityEngine.Debug.Log(buf);
 
 #if (UNITY_WEBGL && !UNITY_EDITOR)
