@@ -54,6 +54,9 @@ namespace Grimmz.UI
 
         private void DeleteAllCards()
         {
+            if (_cards == null || _cards.Count <= 0)
+                return;
+
             for (int i = _cards.Count - 1; i >= 0; i--)
             {
                 _cards[i].DeInit();
