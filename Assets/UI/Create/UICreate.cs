@@ -3,6 +3,8 @@ using Grimmz.Utils;
 using Grimmz.WebGL;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using System;
 
 namespace Grimmz.UI.Create
 {
@@ -14,8 +16,9 @@ namespace Grimmz.UI.Create
         {
             createButton.onClick.AddListener(() =>
             {
-                var serializedCard = UIBrickEditor.Instance.BrickTree.Serialize();
-                UnityToReact.Instance.CallCreateCard(serializedCard);
+                List<byte> buffer = new List<byte>();
+                UIBrickEditor.Instance.BrickTree.SerializeToBytes(ref buffer);
+                UnityToReact.Instance.CallCreateCard(buffer.ToArray());
             });
         }
 
