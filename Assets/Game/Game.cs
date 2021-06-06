@@ -4,6 +4,7 @@ using Grimmz.Utils;
 using Grimmz.Modules.Wallet;
 using Grimmz.Modules.CardCollection;
 using Grimmz.WebGL;
+using Grimmz.Modules.FightModule;
 
 namespace Grimmz
 {
@@ -15,8 +16,9 @@ namespace Grimmz
 
             Wallet.Instance?.Init();
             CardCollection.Instance?.Init();
-            UnityToReact.Instance.CallOnUnityLoaded();
-            GameSM.Instance.PerformInitialTransition().Forget();
+            FightModule.Instance?.Init();
+            UnityToReact.Instance?.CallOnUnityLoaded();
+            GameSM.Instance?.PerformInitialTransition().Forget();
         }
 
         public void DeInit()
@@ -25,6 +27,7 @@ namespace Grimmz
 
             Wallet.Instance?.DeInit();
             CardCollection.Instance?.DeInit();
+            FightModule.Instance?.DeInit();
         }
     }
 }

@@ -34,6 +34,8 @@ namespace Grimmz.UI
             DeleteAllCards();
             _cards = new List<UICard>();
 
+            if (collection == null) return;
+
             foreach (var cardData in collection.Cards)
             {
                 var newCard = Instantiate(cardPrefab, content).GetComponent<UICard>();
