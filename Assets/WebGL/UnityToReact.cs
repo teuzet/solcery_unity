@@ -24,7 +24,7 @@ namespace Grimmz.WebGL
         public void CallOnUnityLoaded()
         {
 #if (UNITY_WEBGL && !UNITY_EDITOR)
-    OnUnityLoaded (message);
+    OnUnityLoaded ();
 #endif
         }
 
@@ -45,7 +45,8 @@ namespace Grimmz.WebGL
         public void CallCreateCard(byte[] card)
         {
 #if (UNITY_WEBGL && !UNITY_EDITOR)
-        CreateCard(buf);
+    string buf = String.Join("|", card);
+    CreateCard(buf);
 #endif
         }
     }
