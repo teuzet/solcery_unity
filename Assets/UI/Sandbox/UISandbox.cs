@@ -7,8 +7,11 @@ namespace Grimmz.UI.Sandbox
 {
     public class UISandbox : Singleton<UISandbox>
     {
+        public UICardCollection CardCollection => cardCollection;
+
         [SerializeField] private TextMeshProUGUI fightLog = null;
         [SerializeField] private Button createFightButton = null;
+        [SerializeField] private UICardCollection cardCollection = null;
 
         void OnEnable()
         {

@@ -8,4 +8,3 @@ namespace Grimmz
         public CardData[] Cards;
     }
 }
-
