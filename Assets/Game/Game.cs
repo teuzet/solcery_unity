@@ -3,6 +3,7 @@ using Grimmz.FSM.Game;
 using Grimmz.Utils;
 using Grimmz.Modules.Wallet;
 using Grimmz.Modules.CardCollection;
+using Grimmz.WebGL;
 
 namespace Grimmz
 {
@@ -14,6 +15,7 @@ namespace Grimmz
 
             Wallet.Instance?.Init();
             CardCollection.Instance?.Init();
+            UnityToReact.Instance.CallOnUnityLoaded();
             GameSM.Instance.PerformInitialTransition().Forget();
         }
 

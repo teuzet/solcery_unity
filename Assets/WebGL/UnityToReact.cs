@@ -8,6 +8,7 @@ namespace Grimmz.WebGL
     public class UnityToReact : Singleton<UnityToReact>
     {
         [DllImport("__Internal")] private static extern void LogToConsole(string message);
+        [DllImport("__Internal")] private static extern void OnUnityLoaded();
         [DllImport("__Internal")] private static extern void CreateCard(string card);
 
         public void CallLogToConsole(string message)
@@ -17,13 +18,15 @@ namespace Grimmz.WebGL
 #endif
         }
 
+        public void CallOnUnityLoaded()
+        {
+#if (UNITY_WEBGL && !UNITY_EDITOR)
+    LogToConsole (message);
+#endif
+        }
+
         public void CallCreateCard(byte[] card)
         {
-
-            UnityEngine.Debug.Log("CallCreateCard");
-            string buf = String.Join("|", card);
-            UnityEngine.Debug.Log(buf);
-
 #if (UNITY_WEBGL && !UNITY_EDITOR)
         CreateCard(buf);
 #endif
