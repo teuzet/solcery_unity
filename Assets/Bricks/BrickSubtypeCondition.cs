@@ -6,6 +6,9 @@ namespace Grimmz
         False,
         Or,
         And,
-        Not
+        Not,
+        Equal,
+        GreaterThan,
+        LesserThan
     }
 }

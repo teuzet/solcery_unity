@@ -8,9 +8,9 @@ namespace Grimmz.WebGL
     public class UnityToReact : Singleton<UnityToReact>
     {
         [DllImport("__Internal")] private static extern void LogToConsole(string message);
-        [DllImport("__Internal")] private static extern void OnUnityLoaded();
+        [DllImport("__Internal")] private static extern void OnUnityLoaded(string message);
         [DllImport("__Internal")] private static extern void CreateCard(string card);
-        [DllImport("__Internal")] private static extern void CreateFight();
+        [DllImport("__Internal")] private static extern void CreateFight(string message);
         [DllImport("__Internal")] private static extern void UseCard(string card);
 
 
@@ -24,14 +24,14 @@ namespace Grimmz.WebGL
         public void CallOnUnityLoaded()
         {
 #if (UNITY_WEBGL && !UNITY_EDITOR)
-    OnUnityLoaded ();
+    OnUnityLoaded ("message");
 #endif
         }
 
         public void CallCreateFight()
         {
 #if (UNITY_WEBGL && !UNITY_EDITOR)
-    CreateFight();
+    CreateFight("message");
 #endif
         }
 
