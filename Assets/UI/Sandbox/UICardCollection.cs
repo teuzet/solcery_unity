@@ -7,6 +7,9 @@ namespace Grimmz.UI.Sandbox
         [SerializeField] private Transform content;
         [SerializeField] private GameObject cardPrefab;
 
-        
+        public void Des(string jsonCollection)
+        {
+            var collection = JsonUtility.FromJson<Collection>(jsonCollection);
+        }
     }
 }
