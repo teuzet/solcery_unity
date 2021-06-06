@@ -16,6 +16,7 @@ namespace Grimmz.UI
 
         public void Init()
         {
+            _cards = new List<UICard>();
             Debug.Log("UICardCollection Init");
 
             CardCollection.Instance?.Collection.ForEachAsync(c =>
