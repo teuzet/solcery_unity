@@ -19,22 +19,24 @@ namespace Grimmz
 
         public BrickData(BrickConfig config)
         {
-            HasObjectSelection = config.HasObjectSelection;
             Type = (int)config.Type;
             Subtype = BrickConfigs.GetSubtypeIndex(config.Type, config.Subtype);
-            UnityEngine.Debug.Log($"Setting Subtype to {Subtype}");
+
+            HasField = config.HasField;
+            HasObjectSelection = config.HasObjectSelection;
+
             Slots = new BrickData[config.Slots.Count];
-            UnityEngine.Debug.Log(Slots.Length);
         }
 
-        public void SerializeToBytes(ref List<byte> buffer) {
+        public void SerializeToBytes(ref List<byte> buffer)
+        {
             buffer.AddRange(BitConverter.GetBytes(Type).ToList<byte>());
             buffer.AddRange(BitConverter.GetBytes(Subtype).ToList<byte>());
             if (HasObjectSelection)
                 buffer.AddRange(BitConverter.GetBytes(Object).ToList<byte>());
             if (IntField >= 0)
                 buffer.AddRange(BitConverter.GetBytes(IntField).ToList<byte>());
-            foreach (BrickData child in Slots) 
+            foreach (BrickData child in Slots)
                 child.SerializeToBytes(ref buffer);
         }
     }

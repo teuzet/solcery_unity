@@ -1,7 +1,6 @@
 using System;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI.Extensions;
 
 namespace Grimmz.UI.Create.BrickEditor
 {
@@ -21,6 +20,8 @@ namespace Grimmz.UI.Create.BrickEditor
         [SerializeField] private TextMeshProUGUI subtypeName = null;
         [SerializeField] private TextMeshProUGUI description = null;
 
+        [SerializeField] private UIBrickField field = null;
+
         [SerializeField] private UIBrickObjectSwitcher objectSwitcher = null;
         [SerializeField] private UIBrickSlots slots = null;
 
@@ -31,6 +32,9 @@ namespace Grimmz.UI.Create.BrickEditor
             typeName.text = Enum.GetName(typeof(BrickType), config.Type);
             subtypeName.text = BrickConfigs.GetSubtypeName(config.Type, config.Subtype);
             description.text = config.Description;
+
+            field.gameObject.SetActive(config.HasField);
+            if (config.HasField) field.Init(config.FieldName, config.FieldType, data);
 
             objectSwitcher.gameObject.SetActive(config.HasObjectSelection);
             slots.Init(config.Slots);
