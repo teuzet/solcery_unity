@@ -11,7 +11,7 @@ namespace Grimmz.UI.Menu
 
         void Start()
         {
-            logButton.onClick.AddListener(() => { UnityToReact.Instance.CallLogToConsole("logging smth to console from Unity"); });
+            logButton.onClick.AddListener(() => { UnityToReact.Instance?.CallLogToConsole("logging smth to console from Unity"); });
         }
     }
 }

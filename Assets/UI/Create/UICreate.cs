@@ -18,7 +18,7 @@ namespace Grimmz.UI.Create
             {
                 List<byte> buffer = new List<byte>();
                 UIBrickEditor.Instance.BrickTree.SerializeToBytes(ref buffer);
-                UnityToReact.Instance.CallCreateCard(buffer.ToArray());
+                UnityToReact.Instance?.CallCreateCard(buffer.ToArray());
             });
         }
 

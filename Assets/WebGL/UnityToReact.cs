@@ -11,7 +11,7 @@ namespace Grimmz.WebGL
         [DllImport("__Internal")] private static extern void OnUnityLoaded();
         [DllImport("__Internal")] private static extern void CreateCard(string card);
         [DllImport("__Internal")] private static extern void CreateFight();
-        [DllImport("__Internal")] private static extern void UseCard(string cardMintAccount);
+        [DllImport("__Internal")] private static extern void UseCard(string card);
 
 
         public void CallLogToConsole(string message)
@@ -35,10 +35,10 @@ namespace Grimmz.WebGL
 #endif
         }
 
-        public void CallUseCard(string cardMintAccount)
+        public void CallUseCard(string card)
         {
 #if (UNITY_WEBGL && !UNITY_EDITOR)
-    UseCard(cardMintAccount);
+    UseCard(card);
 #endif
         }
 
