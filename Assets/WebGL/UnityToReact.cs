@@ -8,7 +8,7 @@ namespace Grimmz.WebGL
     public class UnityToReact : Singleton<UnityToReact>
     {
         [DllImport("__Internal")] private static extern void LogToConsole(string message);
-        [DllImport("__Internal")] private static extern void CreateCard(List<byte> card);
+        [DllImport("__Internal")] private static extern void CreateCard(byte[] card);
 
         public void CallLogToConsole(string message)
         {
