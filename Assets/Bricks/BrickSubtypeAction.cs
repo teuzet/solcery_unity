@@ -5,10 +5,10 @@ namespace Grimmz
         Void,
         Set,
         Conditional,
-        SetAttr,
-        ChangeAttr,
         TakeDamage,
         Heal,
+        SetAttr,
+        ChangeAttr,
         AOE
     }
 }
