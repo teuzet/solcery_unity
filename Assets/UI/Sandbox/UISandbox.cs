@@ -13,12 +13,22 @@ namespace Grimmz.UI.Sandbox
         [SerializeField] private Button createFightButton = null;
         [SerializeField] private UICardCollection cardCollection = null;
 
-        void OnEnable()
+        public void Init()
         {
+            Debug.Log("UISandbox Init");
+            cardCollection.Init();
+
             createFightButton.onClick.AddListener(() =>
-            {
-                fightLog.text = "Clicked";
-            });
+           {
+               fightLog.text = "Clicked";
+           });
+        }
+
+        public void DeInit()
+        {
+            Debug.Log("UISandbox DeInit");
+            cardCollection.DeInit();
+            createFightButton.onClick.RemoveAllListeners();
         }
 
         public void SetText(string newText)
