@@ -11,8 +11,6 @@ namespace Grimmz.UI.Create.BrickEditor
         public RectTransform LinePointBot => linePointBot;
         public UIBrickSlots Slots => slots;
 
-        [SerializeField] private BrickConfigs brickConfigs = null;
-
         [SerializeField] private RectTransform linePointTop = null;
         [SerializeField] private RectTransform linePointBot = null;
 
@@ -37,6 +35,7 @@ namespace Grimmz.UI.Create.BrickEditor
             if (config.HasField) field.Init(config.FieldName, config.FieldType, data);
 
             objectSwitcher.gameObject.SetActive(config.HasObjectSelection);
+            objectSwitcher.Init(data);
             slots.Init(config.Slots);
         }
     }

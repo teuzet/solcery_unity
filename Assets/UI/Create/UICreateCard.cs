@@ -10,15 +10,5 @@ namespace Grimmz.UI.Create
 
         [SerializeField] private TMP_InputField cardNameInput;
         [SerializeField] private TMP_InputField cardDescriptionInput;
-
-        public void Init()
-        {
-
-        }
-
-        public void DeInit()
-        {
-
-        }
     }
 }

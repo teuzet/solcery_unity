@@ -49,8 +49,6 @@ namespace Grimmz.UI.Create.BrickEditor
             var brick = Instantiate(brickPrefab, button.Vert).GetComponent<UIBrick>();
             brick.Init(config, brickData);
 
-
-
             if (button.Parent == null)
             {
                 Debug.Log("Setting Genesis BrickData");
