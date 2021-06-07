@@ -3,7 +3,6 @@ using Cysharp.Threading.Tasks.Linq;
 using Grimmz.Modules.FightModule;
 using Grimmz.Utils;
 using Grimmz.WebGL;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,14 +13,12 @@ namespace Grimmz.UI.Sandbox
         public UICardCollection CardCollection => cardCollection;
 
         [SerializeField] private Button createFightButton = null;
+        [SerializeField] private UIFight fight = null;
         [SerializeField] private UICardCollection cardCollection = null;
-
-        [SerializeField] private TextMeshProUGUI hp1Text = null;
-        [SerializeField] private TextMeshProUGUI hp2Text = null;
 
         public void Init()
         {
-            // Debug.Log("UISandbox Init");
+            fight.Init();
             cardCollection.Init();
 
             if (FightModule.Instance.Fight.Value == null)
@@ -34,11 +31,11 @@ namespace Grimmz.UI.Sandbox
             }
             else
             {
+                fight.gameObject.SetActive(true);
                 createFightButton.gameObject.SetActive(false);
                 UpdateFight(FightModule.Instance.Fight.Value);
             }
 
-            // subscribe to fight updates
             FightModule.Instance?.Fight.WithoutCurrent().ForEachAsync(f =>
             {
                 if (f != null) UpdateFight(f);
@@ -47,13 +44,13 @@ namespace Grimmz.UI.Sandbox
 
         private void UpdateFight(Fight fight)
         {
-            hp1Text.text = fight.HP1.ToString();
-            hp2Text.text = fight.HP2.ToString();
+            this.fight.gameObject.SetActive(true);
+            this.fight.UpdateFight(fight);
         }
 
         public void DeInit()
         {
-            // Debug.Log("UISandbox DeInit");
+            fight.DeInit();
             cardCollection.DeInit();
             createFightButton.onClick.RemoveAllListeners();
         }
