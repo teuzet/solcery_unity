@@ -13,7 +13,7 @@ namespace Grimmz
     {
         public void Init()
         {
-            UnityEngine.Debug.Log("Game Init");
+            // UnityEngine.Debug.Log("Game Init");
 
             Wallet.Instance?.Init();
             CardCollection.Instance?.Init();
@@ -24,7 +24,7 @@ namespace Grimmz
 
         public void DeInit()
         {
-            UnityEngine.Debug.Log("Game DeInit");
+            // UnityEngine.Debug.Log("Game DeInit");
 
             Wallet.Instance?.DeInit();
             CardCollection.Instance?.DeInit();

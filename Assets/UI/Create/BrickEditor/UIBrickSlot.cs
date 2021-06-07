@@ -23,5 +23,10 @@ namespace Grimmz.UI.Create.BrickEditor
         {
             slotName.text = name;
         }
+
+        public void SetFilled(bool isFilled)
+        {
+            toggle.isOn = isFilled;
+        }
     }
 }

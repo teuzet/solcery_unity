@@ -16,12 +16,12 @@ namespace Grimmz.Modules.FightModule
 
         public void Init()
         {
-            Debug.Log("FightModule Init");
+            // Debug.Log("FightModule Init");
         }
 
         public void DeInit()
         {
-            Debug.Log("FightModule DeInit");
+            // Debug.Log("FightModule DeInit");
         }
     }
 }

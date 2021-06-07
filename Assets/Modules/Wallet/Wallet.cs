@@ -12,7 +12,7 @@ namespace Grimmz.Modules.Wallet
 
         public void Init()
         {
-            Debug.Log("Wallet Init");
+            // Debug.Log("Wallet Init");
 
             _data = new WalletData();
             UIWallet.Instance?.Init(_data);
@@ -20,7 +20,7 @@ namespace Grimmz.Modules.Wallet
 
         public void DeInit()
         {
-            Debug.Log("Wallet DeInit");
+            // Debug.Log("Wallet DeInit");
         }
     }
 }

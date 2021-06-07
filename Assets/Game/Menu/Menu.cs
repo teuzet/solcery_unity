@@ -7,12 +7,12 @@ namespace Grimmz
     {
         public void Init()
         {
-            Debug.Log("Menu Init");
+            // Debug.Log("Menu Init");
         }
 
         public void DeInit()
         {
-            Debug.Log("Menu DeInit");
+            // Debug.Log("Menu DeInit");
         }
     }
 }

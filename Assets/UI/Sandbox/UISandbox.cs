@@ -21,7 +21,7 @@ namespace Grimmz.UI.Sandbox
 
         public void Init()
         {
-            Debug.Log("UISandbox Init");
+            // Debug.Log("UISandbox Init");
             cardCollection.Init();
 
             if (FightModule.Instance.Fight.Value == null)
@@ -53,7 +53,7 @@ namespace Grimmz.UI.Sandbox
 
         public void DeInit()
         {
-            Debug.Log("UISandbox DeInit");
+            // Debug.Log("UISandbox DeInit");
             cardCollection.DeInit();
             createFightButton.onClick.RemoveAllListeners();
         }

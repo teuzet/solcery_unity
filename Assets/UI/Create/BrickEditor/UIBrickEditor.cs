@@ -36,7 +36,7 @@ namespace Grimmz.UI.Create.BrickEditor
 
         private void OnBrickAdded(SubtypeNameConfig subtypeNameConfig, UISelectBrickButton button)
         {
-            Debug.Log($"{subtypeNameConfig.Name} selected");
+            // Debug.Log($"{subtypeNameConfig.Name} selected");
             CloseSubtypePopup();
             DestroyImmediate(button.gameObject);
             CreateBrick(subtypeNameConfig.Config, button);
@@ -51,14 +51,13 @@ namespace Grimmz.UI.Create.BrickEditor
 
             if (button.Parent == null)
             {
-                Debug.Log("Setting Genesis BrickData");
+                // Debug.Log("Setting Genesis BrickData");
                 _brickTree.SetGenesis(brickData);
             }
             else
             {
-                Debug.Log($"Parent Slots Count: {button.Parent.Data.Slots.Length}");
-                Debug.Log($"Adding Slot {button.IndexInParentSlots} to {button.Parent.Data.Type}");
                 button.Parent.Data.Slots[button.IndexInParentSlots] = brickData;
+                button.Parent.Slots.Slots[button.IndexInParentSlots].SetFilled(true);
             }
 
             var hor = Instantiate(horPrefab, button.Vert);
@@ -68,7 +67,6 @@ namespace Grimmz.UI.Create.BrickEditor
                 var vert = Instantiate(vertPrefab, hor.transform);
                 var selectBrickButton = Instantiate(selectBrickButtonPrefab, vert.transform).GetComponent<UISelectBrickButton>();
                 selectBrickButton.Init(config.Slots[i].Type, vert.transform, brick, i);
-                Debug.Log(selectBrickButton.Parent.Data.Slots.Length);
             }
 
             LayoutRebuilder.ForceRebuildLayoutImmediate(content);

@@ -16,12 +16,12 @@ namespace Grimmz.Modules.CardCollection
 
         public void Init()
         {
-            Debug.Log("CardCollection Init");
+            // Debug.Log("CardCollection Init");
         }
 
         public void DeInit()
         {
-            Debug.Log("CardCollection DeInit");
+            // Debug.Log("CardCollection DeInit");
         }
     }
 }

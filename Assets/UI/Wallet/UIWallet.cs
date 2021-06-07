@@ -14,7 +14,7 @@ namespace Grimmz.UI.Wallet
 
         public void Init(WalletData data)
         {
-            Debug.Log("UIWallet Init");
+            // Debug.Log("UIWallet Init");
 
             _data = data;
 

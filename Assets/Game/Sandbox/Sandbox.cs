@@ -8,13 +8,13 @@ namespace Grimmz
     {
         public void Init()
         {
-            Debug.Log("Sandbox Init");
+            // Debug.Log("Sandbox Init");
             UISandbox.Instance?.Init();
         }
 
         public void DeInit()
         {
-            Debug.Log("Sandbox DeInit");
+            // Debug.Log("Sandbox DeInit");
             UISandbox.Instance?.DeInit();
         }
     }
