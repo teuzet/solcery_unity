@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 1797080464029737543}
   - component: {fileID: 1797080464029737537}
   - component: {fileID: 2503520720810901488}
+  - component: {fileID: 4977087376491716873}
+  - component: {fileID: 1277337648683463021}
   m_Layer: 5
   m_Name: UIBrickSubtypePopup
   m_TagString: Untagged
@@ -52,12 +54,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
+    m_Left: 5
+    m_Right: 5
+    m_Top: 5
+    m_Bottom: 5
   m_ChildAlignment: 1
-  m_Spacing: -10
+  m_Spacing: -8
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -93,7 +95,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionPrefab: {fileID: 9075808060668510954, guid: 02ade79a6c7429d478e35e18a2381e39, type: 3}
   brickConfigs: {fileID: 11400000, guid: ba145136b3bac5d4b878eb2f984de89e, type: 2}
-  content: {fileID: 0}
 --- !u!114 &2503520720810901488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,3 +115,41 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!222 &4977087376491716873
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797080464029737541}
+  m_CullTransparentMesh: 1
+--- !u!114 &1277337648683463021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797080464029737541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.88235295}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 0.3
