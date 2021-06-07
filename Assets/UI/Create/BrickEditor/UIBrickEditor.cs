@@ -1,10 +1,9 @@
-using Grimmz.Utils;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Grimmz.UI.Create.BrickEditor
 {
-    public class UIBrickEditor : Singleton<UIBrickEditor>
+    public class UIBrickEditor : MonoBehaviour
     {
         public BrickTree BrickTree => _brickTree;
 

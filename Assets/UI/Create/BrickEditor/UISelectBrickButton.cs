@@ -27,7 +27,7 @@ namespace Grimmz.UI.Create.BrickEditor
 
             button.onClick.AddListener(() =>
             {
-                UIBrickEditor.Instance.OpenSubtypePopup(this);
+                UICreate.Instance.BrickEditor.OpenSubtypePopup(this);
             });
         }
 

@@ -9,6 +9,9 @@ namespace Grimmz.UI.Create
 {
     public class UICreate : Singleton<UICreate>
     {
+        public UIBrickEditor BrickEditor => brickEditor;
+
+        [SerializeField] private UIBrickEditor brickEditor = null;
         [SerializeField] private UICreateCard createCard = null;
         [SerializeField] private Button createButton = null;
 
@@ -18,12 +21,12 @@ namespace Grimmz.UI.Create
 
             createButton.onClick.AddListener(() =>
             {
-                UIBrickEditor.Instance.BrickTree.MetaData.Name = string.IsNullOrEmpty(createCard.CardNameInput.text) ? "Card" : createCard.CardNameInput.text;
-                UIBrickEditor.Instance.BrickTree.MetaData.Description = string.IsNullOrEmpty(createCard.CardDescriptionInput.text) ? "Description" : createCard.CardDescriptionInput.text;
-                UIBrickEditor.Instance.BrickTree.MetaData.Picture = createCard.CurrentPictureIndex;
+                brickEditor.BrickTree.MetaData.Name = string.IsNullOrEmpty(createCard.CardNameInput.text) ? "Card" : createCard.CardNameInput.text;
+                brickEditor.BrickTree.MetaData.Description = string.IsNullOrEmpty(createCard.CardDescriptionInput.text) ? "Description" : createCard.CardDescriptionInput.text;
+                brickEditor.BrickTree.MetaData.Picture = createCard.CurrentPictureIndex;
 
                 List<byte> buffer = new List<byte>();
-                UIBrickEditor.Instance.BrickTree.SerializeToBytes(ref buffer);
+                brickEditor.BrickTree.SerializeToBytes(ref buffer);
                 UnityToReact.Instance?.CallCreateCard(buffer.ToArray());
             });
         }
