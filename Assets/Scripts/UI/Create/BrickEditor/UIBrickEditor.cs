@@ -39,22 +39,23 @@ namespace Grimmz.UI.Create.BrickEditor
 
         private void OnBrickAdded(SubtypeNameConfig subtypeNameConfig, UISelectBrickButton button)
         {
-            // Debug.Log($"{subtypeNameConfig.Name} selected");
             CloseSubtypePopup();
-            DestroyImmediate(button.gameObject);
             CreateBrick(subtypeNameConfig.Config, button);
         }
 
         private void CreateBrick(BrickConfig config, UISelectBrickButton button)
         {
+            DestroyImmediate(button.gameObject);
+
             var brickData = new BrickData(config);
 
             var brick = Instantiate(brickPrefab, button.Vert).GetComponent<UIBrick>();
-            brick.Init(config, brickData);
+            var hor = Instantiate(horPrefab, button.Vert);
+
+            brick.Init(config, brickData, button.Parent, button.IndexInParentSlots, button.Vert, hor);
 
             if (button.Parent == null)
             {
-                // Debug.Log("Setting Genesis BrickData");
                 _brickTree.SetGenesis(brickData);
             }
             else
@@ -63,7 +64,6 @@ namespace Grimmz.UI.Create.BrickEditor
                 button.Parent.Slots.Slots[button.IndexInParentSlots].SetFilled(true);
             }
 
-            var hor = Instantiate(horPrefab, button.Vert);
 
             for (int i = 0; i < config.Slots.Count; i++)
             {
@@ -71,6 +71,28 @@ namespace Grimmz.UI.Create.BrickEditor
                 var selectBrickButton = Instantiate(selectBrickButtonPrefab, vert.transform).GetComponent<UISelectBrickButton>();
                 selectBrickButton.Init(config.Slots[i].Type, vert.transform, brick, i);
             }
+
+            LayoutRebuilder.ForceRebuildLayoutImmediate(content);
+        }
+
+        public void DeleteBrick(UIBrick brick)
+        {
+            var selectBrickButton = Instantiate(selectBrickButtonPrefab, brick.Vert.transform).GetComponent<UISelectBrickButton>();
+
+            if (brick.Parent == null)
+            {
+                _brickTree.SetGenesis(null);
+                selectBrickButton.Init(BrickType.Action, content);
+            }
+            else
+            {
+                brick.Parent.Data.Slots[brick.IndexInParentSlots] = null;
+                brick.Parent.Slots.Slots[brick.IndexInParentSlots].SetFilled(false);
+                selectBrickButton.Init(brick.Config.Type, brick.Vert.transform, brick.Parent, brick.IndexInParentSlots);
+            }
+
+            DestroyImmediate(brick.Hor);
+            DestroyImmediate(brick.gameObject);
 
             LayoutRebuilder.ForceRebuildLayoutImmediate(content);
         }
