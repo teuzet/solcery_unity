@@ -14,10 +14,13 @@ namespace Grimmz.UI.Create
 
         public void Init()
         {
+            createCard.Init();
+
             createButton.onClick.AddListener(() =>
             {
                 UIBrickEditor.Instance.BrickTree.MetaData.Name = string.IsNullOrEmpty(createCard.CardNameInput.text) ? "Card" : createCard.CardNameInput.text;
                 UIBrickEditor.Instance.BrickTree.MetaData.Description = string.IsNullOrEmpty(createCard.CardDescriptionInput.text) ? "Description" : createCard.CardDescriptionInput.text;
+                UIBrickEditor.Instance.BrickTree.MetaData.Picture = createCard.CurrentPictureIndex;
 
                 List<byte> buffer = new List<byte>();
                 UIBrickEditor.Instance.BrickTree.SerializeToBytes(ref buffer);
@@ -27,6 +30,7 @@ namespace Grimmz.UI.Create
 
         public void DeInit()
         {
+            createCard.DeInit();
             createButton.onClick.RemoveAllListeners();
         }
     }
