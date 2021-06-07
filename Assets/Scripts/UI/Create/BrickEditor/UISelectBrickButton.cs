@@ -28,7 +28,6 @@ namespace Grimmz.UI.Create.BrickEditor
             button.onClick.AddListener(() =>
             {
                 UICreate.Instance.BrickEditor.OpenSubtypePopup(this);
-                button.interactable = false;
             });
         }
 

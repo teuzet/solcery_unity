@@ -8,6 +8,7 @@ namespace Grimmz.UI.Create.BrickEditor
         public BrickTree BrickTree => _brickTree;
 
         [SerializeField] private UIBrickSubtypePopup subtypePopup = null;
+        [SerializeField] private GameObject contentBlocker = null;
         [SerializeField] private GameObject horPrefab = null;
         [SerializeField] private GameObject vertPrefab = null;
         [SerializeField] private GameObject selectBrickButtonPrefab = null;
@@ -24,12 +25,15 @@ namespace Grimmz.UI.Create.BrickEditor
 
         public void OpenSubtypePopup(UISelectBrickButton button)
         {
+            contentBlocker.gameObject.SetActive(true);
+            contentBlocker.transform.SetAsLastSibling();
             subtypePopup.gameObject.SetActive(true);
             subtypePopup.Open(button, OnBrickAdded);
         }
 
         public void CloseSubtypePopup()
         {
+            contentBlocker.gameObject.SetActive(false);
             subtypePopup.Close();
         }
 
