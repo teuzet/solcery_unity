@@ -447,6 +447,8 @@ MonoBehaviour:
   title: {fileID: 81393444}
   titleHighlightedColor: {r: 0.76862746, g: 0.45882353, b: 0.12941177, a: 1}
   titleUnhighlightedColor: {r: 0.36862746, g: 0.30588236, b: 0.24313726, a: 1}
+  tooltip: Test your freshly minted cards in a sandbox duel. All game logic is written
+    on chain and we are proud of it.
 --- !u!114 &300940413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -812,7 +814,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  logButton: {fileID: 0}
+  tooltips: {fileID: 1514941001}
 --- !u!1 &760739624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,6 +1376,9 @@ MonoBehaviour:
   title: {fileID: 1358893642}
   titleHighlightedColor: {r: 0.76862746, g: 0.45882353, b: 0.12941177, a: 1}
   titleUnhighlightedColor: {r: 0.36862746, g: 0.30588236, b: 0.24313726, a: 1}
+  tooltip: Create your own cards using basic logic blocks and customize them. Each
+    card created is minted  on chain and transferred to your wallet. Use them to
+    play, grow your collection or trade with other players.
 --- !u!114 &1429419825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1429,13 +1434,14 @@ GameObject:
   - component: {fileID: 1514940998}
   - component: {fileID: 1514941000}
   - component: {fileID: 1514940999}
+  - component: {fileID: 1514941001}
   m_Layer: 5
-  m_Name: UIMenuButtonsTooltips
+  m_Name: UIMenuButtonTooltips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1514940998
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1475,9 +1481,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Create your own cards using basic logic blocks and customize them. Each
-    card created is minted  on chain and transferred to your wallet. Use them to
-    play, grow your collection or trade with other players.
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 98ae539f0ab864f65b5fc85d09757eb2, type: 2}
   m_sharedMaterial: {fileID: 644716123368233633, guid: 98ae539f0ab864f65b5fc85d09757eb2, type: 2}
@@ -1509,7 +1513,7 @@ MonoBehaviour:
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 10
-  m_fontSizeMax: 30
+  m_fontSizeMax: 22
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1554,6 +1558,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1514940997}
   m_CullTransparentMesh: 1
+--- !u!114 &1514941001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514940997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897e27bed8530ad458b4b721316d8330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipText: {fileID: 1514940999}
 --- !u!1 &1593928667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1610,6 +1627,8 @@ MonoBehaviour:
   title: {fileID: 202503150}
   titleHighlightedColor: {r: 0.76862746, g: 0.45882353, b: 0.12941177, a: 1}
   titleUnhighlightedColor: {r: 0.36862746, g: 0.30588236, b: 0.24313726, a: 1}
+  tooltip: Here you can stake SOL, USDC and LP tokens to farm logic bricks for card
+    creation and customization
 --- !u!114 &1593928670
 MonoBehaviour:
   m_ObjectHideFlags: 0

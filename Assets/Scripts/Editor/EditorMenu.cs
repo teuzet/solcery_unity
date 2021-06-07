@@ -10,38 +10,38 @@ namespace Grimmz.Editor
         [MenuItem("Grimmz/Play", false, -1)]
         static async UniTask Play()
         {
-            await StopPlayingAndOpenScene("Assets/_Main/_Main.unity");
+            await StopPlayingAndOpenScene("Assets/Scenes/_Main.unity");
             EditorApplication.EnterPlaymode();
         }
 
         [MenuItem("Grimmz/Scene/Main", false, 21)]
         static async UniTask OpenMainScene()
         {
-            await StopPlayingAndOpenScene("Assets/_Main/_Main.unity");
+            await StopPlayingAndOpenScene("Assets/Scenes/_Main.unity");
         }
 
         [MenuItem("Grimmz/Scene/Menu", false, 22)]
         static async UniTask OpenMenuScene()
         {
-            await StopPlayingAndOpenScene("Assets/Game/Menu/Menu.unity");
+            await StopPlayingAndOpenScene("Assets/Scenes/Menu.unity");
         }
 
         [MenuItem("Grimmz/Scene/Farm", false, 23)]
         static async UniTask OpenFarmScene()
         {
-            await StopPlayingAndOpenScene("Assets/Game/Farm/Farm.unity");
+            await StopPlayingAndOpenScene("Assets/Scenes/Farm.unity");
         }
 
         [MenuItem("Grimmz/Scene/Create", false, 24)]
         static async UniTask OpenCreateScene()
         {
-            await StopPlayingAndOpenScene("Assets/Game/Create/Create.unity");
+            await StopPlayingAndOpenScene("Assets/Scenes/Create.unity");
         }
 
         [MenuItem("Grimmz/Scene/Sandbox", false, 25)]
         static async UniTask OpenSandboxScene()
         {
-            await StopPlayingAndOpenScene("Assets/Game/Sandbox/Sandbox.unity");
+            await StopPlayingAndOpenScene("Assets/Scenes/Sandbox.unity");
         }
 
         [MenuItem("Grimmz/Scene/GUI Kit", false, 101)]
